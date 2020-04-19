@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
     private UserRepository userRepo;
     
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncod;
 
     @Autowired
     private MailSender mailSender;
@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         user.setActivationCode(UUID.randomUUID().toString());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncod.encode(user.getPassword()));
 
         userRepo.save(user);
 
